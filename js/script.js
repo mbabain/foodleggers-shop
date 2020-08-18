@@ -18,7 +18,7 @@ function wrapperMaxWidth() {
     for (i = 0; i < links.length; i++) {
         if (document.documentElement.clientWidth > 1239) {
             allWidth += parseInt(getComputedStyle(links[i]).width, 10) + 80;
-        } else if (document.documentElement.clientWidth > 445) {
+        } else if (document.documentElement.clientWidth > 446) {
             allWidth += parseInt(getComputedStyle(links[i]).width, 10) + 60;
         } else if (document.documentElement.clientWidth <= 446) {
             allWidth += parseInt(getComputedStyle(links[i]).width, 10) + 40;
