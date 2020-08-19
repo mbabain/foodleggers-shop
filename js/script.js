@@ -10,8 +10,29 @@ const menuMail = document.querySelector('.section-header-main-mail');
 const helpLinksWrapper = document.querySelector('.section-header-help-links .section-inner');
 const helpLinks = document.querySelector('.section-header-help-links');
 const helpLinkMenu = document.querySelector('.section-header-help-link--menu');
+const scrollMenu = document.querySelector('.scroll');
+let scrollPrev = 0;
 
 wrapperMaxWidth();
+
+window.addEventListener('resize', wrapperMaxWidth);
+
+window.addEventListener('orientationchange', wrapperMaxWidth);
+
+hamburgerButton.addEventListener('click', hamburgerToggle);
+
+window.addEventListener('scroll', hamburgerRemove);
+
+window.addEventListener ('scroll', () => {
+    var scrolled = window.pageYOffset;
+
+    if (scrolled > 203 && scrolled < scrollPrev) {
+        scrollMenu.classList.remove('scroll--inactive');
+    } else if (scrolled > 203 && scrolled > scrollPrev) {
+        scrollMenu.classList.add('scroll--inactive');
+    }
+    scrollPrev = scrolled;
+});
 
 function wrapperMaxWidth() {
     let allWidth = 0;
@@ -50,10 +71,3 @@ function hamburgerRemove() {
     helpLinks.classList.remove('active--helper-links');
     helpLinkMenu.classList.remove('active--helper-links');
 }
-
-window.addEventListener('resize', wrapperMaxWidth);
-window.addEventListener('orientationchange', wrapperMaxWidth);
-
-hamburgerButton.addEventListener('click', hamburgerToggle);
-
-window.addEventListener('scroll', hamburgerRemove);
